@@ -1,0 +1,10 @@
+<% (['development', 'production'] + [@environment]).uniq.each do |env| -%>
+<%= env %>:
+adapter: postgresql
+database: databindery
+encoding: unicode
+host: undecided
+username: databindery
+password: undecided
+reconnect: true
+<% end %>
