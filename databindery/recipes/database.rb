@@ -8,6 +8,10 @@ packages = %w(
 
 packages.each { |name| package name }
 
+service "postgresql" do
+  action :enable
+end
+
 execute "create-database-user" do
   exists = <<-EOF
     sudo -u postgres psql -t -c "select usename from pg_user where usename='databindery'" | grep -c #{dbname}
@@ -23,4 +27,14 @@ execute "create-database" do
   EOF
   command "sudo -u postgres createdb -O #{dbname} -E utf8 -T template0 #{dbname}"
   not_if exists
+end
+
+template "/etc/postgresql/9.3/main/postgresql.conf" do
+  source   "postgresql.conf.erb"
+  notifies :restart, "service[postgresql]"
+end
+
+template "/etc/postgresql/9.3/main/pg_hba.conf" do
+  source   "pg_hba.conf.erb"
+  notifies :restart, "service[postgresql]"
 end
