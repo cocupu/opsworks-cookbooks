@@ -1,4 +1,5 @@
 dbname = 'databindery'
+dbpass = node['deploy']['databindery']['database']['password']
 
 packages = %w(
   postgresql
@@ -11,7 +12,7 @@ execute "create-database-user" do
   exists = <<-EOF
     sudo -u postgres psql -t -c "select usename from pg_user where usename='databindery'" | grep -c #{dbname}
   EOF
-  command "sudo -u postgres createuser -sw #{dbname}"
+  command "sudo -u postgres psql -t -c \"create user #{dbname} with password '#{dbpass}'\""
   not_if exists
 end
 

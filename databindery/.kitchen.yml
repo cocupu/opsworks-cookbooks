@@ -43,14 +43,10 @@ common_attributes: &ATTRIBUTES
         application: databindery
         environment: {}
         rails_env: production
+        database:
+          password: banana
 
 suites:
-  - name: rails_configure
-    run_list:
-      - recipe[databindery::database_yml]
-    attributes:
-      <<: *ATTRIBUTES
-
   - name: postgres_setup
     run_list:
       - recipe[databindery::database]
