@@ -1,7 +1,7 @@
-config_dir = node[:deploy][:databindery][:deploy_to]
+config_dir = node[:deploy][:databindery][:deploy_to] + "/shared/config"
 
 rails_environment = node[:deploy][:databindery][:rails_env]
-postgres_host     = node[:opsworks][:layers][:postgres][:instances].first[:private_dns_name] rescue ''
+postgres_host     = 'postgres1'
 
 user 'deploy' do
 end
