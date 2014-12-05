@@ -1,3 +1,5 @@
+include_recipe 'databindery::apt'
+
 dbname = 'databindery'
 dbpass = node['deploy']['databindery']['database']['password']
 

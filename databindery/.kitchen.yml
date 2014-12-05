@@ -52,3 +52,9 @@ suites:
       - recipe[databindery::database]
     attributes:
       <<: *ATTRIBUTES
+
+  - name: solr_setup
+    run_list:
+      - recipe[databindery::solr]
+    attributes:
+      <<: *ATTRIBUTES
