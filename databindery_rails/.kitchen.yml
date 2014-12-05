@@ -12,6 +12,5 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[postgresql::server]
-      - recipe[postgresql::databindery_database]
+      - recipe[databindery_rails::configure_database]
     attributes:
