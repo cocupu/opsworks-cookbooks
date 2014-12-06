@@ -1,7 +1,7 @@
 template node['deploy']['databindery']['deploy_to'] + "shared/config/solr.yml" do
   source 'solr.yml.erb'
   owner  'deploy'
-  groud  'www-data'
+  group  'www-data'
   mode   '644'
   action :create
   variables({
