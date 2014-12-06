@@ -10,6 +10,6 @@ template node['deploy']['databindery']['deploy_to'] + "/shared/config/solr.yml" 
 end
 
 link node['deploy']['databindery']['deploy_to'] + "/current/config/solr.yml" do
-  to     node['deploy']['databindery']['deploy_to'] + "shared/config/solr.yml"
+  to     node['deploy']['databindery']['deploy_to'] + "/shared/config/solr.yml"
   action :create
 end
