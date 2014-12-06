@@ -1,4 +1,4 @@
-template node['deploy']['databindery']['deploy_to'] + "shared/config/solr.yml" do
+template node['deploy']['databindery']['deploy_to'] + "/shared/config/solr.yml" do
   source 'solr.yml.erb'
   owner  'deploy'
   group  'www-data'
@@ -9,7 +9,7 @@ template node['deploy']['databindery']['deploy_to'] + "shared/config/solr.yml" d
   })
 end
 
-link node['deploy']['databindery']['deploy_to'] + "current/config/solr.yml" do
+link node['deploy']['databindery']['deploy_to'] + "/current/config/solr.yml" do
   to     node['deploy']['databindery']['deploy_to'] + "shared/config/solr.yml"
   action :create
 end
