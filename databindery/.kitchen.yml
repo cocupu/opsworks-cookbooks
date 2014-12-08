@@ -10,51 +10,180 @@ platforms:
   - name: ubuntu-14.04
 
 common_attributes: &ATTRIBUTES
-    opsworks:
+  ssh_users:
+  deploy:
+    solr_configuration:
+      application: solr_configuration
+      application_type: other
+      environment: {}
+      environment_variables: {}
+      auto_bundle_on_deploy: true
+      deploy_to: "/srv/www/solr_configuration"
+      deploying_user: arn:aws:iam::801054219940:root
+      document_root:
+      domains:
+      - solr_configuration
+      migrate: false
+      mounted_at:
+      rails_env:
+      restart_command: echo 'restarting app'
+      sleep_before_restart: 0
+      ssl_support: false
+      ssl_certificate:
+      ssl_certificate_key:
+      ssl_certificate_ca:
+      scm:
+        scm_type: git
+        repository: https://github.com/steffengodskesen/banana_boat.git
+        revision:
+        ssh_key:
+        user:
+        password:
+      symlink_before_migrate: {}
+      symlinks: {}
+      database: {}
+      memcached:
+        host:
+        port: 11211
+    databindery:
+      database:
+        adapter: postgresql
+        encoding: unicode
+        host: postgres1
+        database: databindery
+        username: databindery
+        password: banana
+  opsworks:
+    activity: deploy
+    valid_client_activities:
+    - reboot
+    - stop
+    - deploy
+    - setup
+    - configure
+    - update_dependencies
+    - install_dependencies
+    - update_custom_cookbooks
+    - execute_recipes
+    sent_at: 1417986985
+    deployment: ea61474f-786c-45b6-b84d-7d8cda79785f
+    layers:
+      rails-app:
+        name: Rails App Server
+        id: 33dfd9f0-c9a2-446e-801f-49ba916b3aab
+        elb-load-balancers: []
+        instances:
+          rails-app1:
+            public_dns_name: ec2-54-93-181-195.eu-central-1.compute.amazonaws.com
+            private_dns_name: ip-172-31-27-182.eu-central-1.compute.internal
+            backends: 4
+            ip: 54.93.181.195
+            private_ip: 172.31.27.182
+            instance_type: t2.small
+            status: online
+            id: 30876389-298b-44d1-aa3d-2e109833462b
+            aws_instance_id: i-8c394e42
+            elastic_ip:
+            created_at: '2014-12-06T15:22:29+00:00'
+            booted_at: '2014-12-06T15:27:40+00:00'
+            region: eu-central-1
+            availability_zone: eu-central-1a
+            infrastructure_class: ec2
+      solr:
+        name: Solr
+        id: dab71ac5-a146-437e-9377-3d1baee7c19b
+        elb-load-balancers: []
+        instances:
+          solr1:
+            public_dns_name: ec2-54-93-180-125.eu-central-1.compute.amazonaws.com
+            private_dns_name: ip-172-31-20-39.eu-central-1.compute.internal
+            backends: 8
+            ip: 54.93.180.125
+            private_ip: 172.31.20.39
+            instance_type: t2.medium
+            status: online
+            id: e3890d95-96c9-4d87-8ab0-9a3b5d187ee3
+            aws_instance_id: i-7ecfbbb0
+            elastic_ip:
+            created_at: '2014-12-06T07:18:20+00:00'
+            booted_at: '2014-12-06T12:05:14+00:00'
+            region: eu-central-1
+            availability_zone: eu-central-1a
+            infrastructure_class: ec2
+      postgres:
+        name: Postgres
+        id: 5f6c3401-ebcf-4259-9faf-f236b451f94c
+        elb-load-balancers: []
+        instances:
+          postgres1:
+            public_dns_name: ec2-54-93-180-117.eu-central-1.compute.amazonaws.com
+            private_dns_name: ip-172-31-27-15.eu-central-1.compute.internal
+            backends: 8
+            ip: 54.93.180.117
+            private_ip: 172.31.27.15
+            instance_type: t2.medium
+            status: online
+            id: 40986d7e-48c8-42ce-95b1-85a67177a089
+            aws_instance_id: i-7dcfbbb3
+            elastic_ip:
+            created_at: '2014-12-06T07:17:53+00:00'
+            booted_at: '2014-12-06T12:05:22+00:00'
+            region: eu-central-1
+            availability_zone: eu-central-1a
+            infrastructure_class: ec2
+    applications:
+    - name: Databindery
+      slug_name: databindery
+      application_type: rails
+    - name: Solr Configuration
+      slug_name: solr_configuration
+      application_type: other
+    stack:
+      name: BananaBoat (development)
+      id: c68049e3-7aa9-419c-9123-8673f0a68dd7
+      vpc_id: vpc-300de359
+      elb-load-balancers: []
+      rds_instances: []
+    instance:
+      id: e3890d95-96c9-4d87-8ab0-9a3b5d187ee3
+      hostname: solr1
+      instance_type: t2.medium
+      public_dns_name: ec2-54-93-180-125.eu-central-1.compute.amazonaws.com
+      private_dns_name: ip-172-31-20-39.eu-central-1.compute.internal
+      ip: 54.93.180.125
+      private_ip: 172.31.20.39
+      architecture: x86_64
       layers:
-        rails-app:
-          name: Rails App Server
-          id: 33dfd9f0-c9a2-446e-801f-49ba916b3aab
-          instances:
-            rails-app1:
-              public_dns_name: ec2-54-93-221-13.eu-central-1.compute.amazonaws.com
-              private_dns_name: ip-172-31-19-31.eu-central-1.compute.internal
-              ip: 54.93.221.13
-              private_ip: 172.31.19.31
-        solr:
-          name: Solr
-          id: dab71ac5-a146-437e-9377-3d1baee7c19b
-          elb-load-balancers: []
-          instances: {}
-        postgres:
-          name: Postgres
-          id: 5f6c3401-ebcf-4259-9faf-f236b451f94c
-          elb-load-balancers: []
-          instances:
-            postgres1:
-              public_dns_name: ec2-54-93-221-13.eu-central-1.compute.amazonaws.com
-              private_dns_name: ip-172-31-19-31.eu-central-1.compute.internal
-              ip: 54.93.221.13
-              private_ip: 172.31.19.31
-
-    deploy:
-      databindery:
-        deploy_to: "/srv/www/databindery"
-        application: databindery
-        environment: {}
-        rails_env: production
-        database:
-          password: banana
+      - solr
+      backends: 8
+      aws_instance_id: i-7ecfbbb0
+      region: eu-central-1
+      availability_zone: eu-central-1a
+      subnet_id: subnet-905fabf9
+      infrastructure_class: ec2
+    ruby_version: 1.9.3
+    ruby_stack: ruby
+    rails_stack:
+      name: apache_passenger
+  chef_environment: _default
+  opsworks_commons:
+    assets_url: https://opsworks-instance-assets-eu-central-1.s3.amazonaws.com
+  opsworks_bundler:
+    version: 1.5.3
+    manage_package: true
+  opsworks_rubygems:
+    version: 2.2.2
 
 suites:
   - name: postgres_setup
     run_list:
-      - recipe[databindery::database]
+      - recipe[databindery::postgres_setup]
     attributes:
       <<: *ATTRIBUTES
 
   - name: solr_setup
     run_list:
-      - recipe[databindery::solr]
+      - recipe[databindery::solr_setup]
+      - recipe[databindery::solr_deploy]
     attributes:
       <<: *ATTRIBUTES

@@ -1,0 +1,11 @@
+source "https://supermarket.getchef.com"
+
+def opsworks_cookbook(name, branch=nil)
+  cookbook name, github: 'aws/opsworks-cookbooks', branch: 'release-chef-11.10', rel: name
+end
+
+%w{ deploy scm_helper mod_php5_apache2 ssh_users opsworks_agent_monit opsworks_java opsworks_nodejs opsworks_aws_flow_ruby dependencies opsworks_commons opsworks_initial_setup gem_support ruby opsworks_bundler opsworks_rubygems} .each do |cb|
+  opsworks_cookbook cb
+end
+
+cookbook 'databindery', path: '.'
