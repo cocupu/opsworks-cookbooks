@@ -12,39 +12,6 @@ platforms:
 common_attributes: &ATTRIBUTES
   ssh_users:
   deploy:
-    solr_configuration:
-      application: solr_configuration
-      application_type: other
-      environment: {}
-      environment_variables: {}
-      auto_bundle_on_deploy: true
-      deploy_to: "/srv/www/solr_configuration"
-      deploying_user: arn:aws:iam::801054219940:root
-      document_root:
-      domains:
-      - solr_configuration
-      migrate: false
-      mounted_at:
-      rails_env:
-      restart_command: echo 'restarting app'
-      sleep_before_restart: 0
-      ssl_support: false
-      ssl_certificate:
-      ssl_certificate_key:
-      ssl_certificate_ca:
-      scm:
-        scm_type: git
-        repository: https://github.com/steffengodskesen/banana_boat.git
-        revision:
-        ssh_key:
-        user:
-        password:
-      symlink_before_migrate: {}
-      symlinks: {}
-      database: {}
-      memcached:
-        host:
-        port: 11211
     databindery:
       database:
         adapter: postgresql
@@ -89,8 +56,8 @@ common_attributes: &ATTRIBUTES
             region: eu-central-1
             availability_zone: eu-central-1a
             infrastructure_class: ec2
-      solr:
-        name: Solr
+      elasticsearch:
+        name: ElasticSearch
         id: dab71ac5-a146-437e-9377-3d1baee7c19b
         elb-load-balancers: []
         instances:
@@ -139,7 +106,7 @@ common_attributes: &ATTRIBUTES
       slug_name: solr_configuration
       application_type: other
     stack:
-      name: BananaBoat (development)
+      name: Databindery (development)
       id: c68049e3-7aa9-419c-9123-8673f0a68dd7
       vpc_id: vpc-300de359
       elb-load-balancers: []
@@ -181,9 +148,8 @@ suites:
     attributes:
       <<: *ATTRIBUTES
 
-  - name: solr_setup
+  - name: elastic_setup
     run_list:
-      - recipe[databindery::solr_setup]
-      - recipe[databindery::solr_deploy]
+      - recipe[databindery::elastic_setup]
     attributes:
       <<: *ATTRIBUTES

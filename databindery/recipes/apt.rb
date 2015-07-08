@@ -1,18 +1,15 @@
-execute "apt-get-update" do
-  command "apt-get update"
-  ignore_failure true
-  action :nothing
+include_recipe 'apt::default'
+
+apt_repository 'elastic' do
+  uri          'http://packages.elastic.co/elasticsearch/1.6/debian'
+  distribution 'stable'
+  components   ['main']
+  key          'https://packages.elastic.co/GPG-KEY-elasticsearch'
 end
 
-package "update-notifier-common" do
-  notifies :run, resources(:execute => "apt-get-update"), :immediately
-end
-
-execute "apt-get-update-periodic" do
-  command "apt-get update"
-  ignore_failure true
-  only_if do
-    File.exists?('/var/lib/apt/periodic/update-success-stamp') &&
-      File.mtime('/var/lib/apt/periodic/update-success-stamp') < Time.now - 86400
-  end
+apt_repository 'postgres' do
+  uri          'http://apt.postgresql.org/pub/repos/apt/'
+  distribution 'trusty-pgdg'
+  components   ['main']
+  key          'https://www.postgresql.org/media/keys/ACCC4CF8.asc'
 end
