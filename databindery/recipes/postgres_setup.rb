@@ -31,12 +31,12 @@ execute "create-database" do
   not_if exists
 end
 
-template "/etc/postgresql/9.3/main/postgresql.conf" do
+template "/etc/postgresql/9.4/main/postgresql.conf" do
   source   "postgresql.conf.erb"
   notifies :restart, "service[postgresql]"
 end
 
-template "/etc/postgresql/9.3/main/pg_hba.conf" do
+template "/etc/postgresql/9.4/main/pg_hba.conf" do
   source   "pg_hba.conf.erb"
   notifies :restart, "service[postgresql]"
 end
