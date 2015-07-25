@@ -20,6 +20,8 @@ common_attributes: &ATTRIBUTES
         database: databindery
         username: databindery
         password: banana
+      elasticsearch:
+        host: elasticsearch1
   opsworks:
     activity: deploy
     valid_client_activities:

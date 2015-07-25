@@ -1,7 +1,7 @@
 include_recipe 'databindery::apt'
 
 dbname = 'databindery'
-dbpass = node['deploy']['databindery']['database']['password']
+dbpass = node['deploy']['databindery_api_server']['database']['password']
 
 packages = %w(
   postgresql
