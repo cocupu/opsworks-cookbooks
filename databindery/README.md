@@ -1,6 +1,6 @@
 # Stack: DataBindery
 
-Cookbooks for the Databindery stack
+Custom Cookbooks for the Databindery stack
 
 ## Requirements
 
@@ -15,10 +15,6 @@ In OpsWorks you would usually set these attributes in the **Custom JSON** for th
     "databindery_api_server": {
       "database": {
         "adapter": "postgres",
-        "host": "HOST_URL",
-        "database": "DB_NAME",
-        "username": "DB_USERNAME",
-        "password": "DB_PASSPHRASE"
       },
       "elasticsearch": {
         "host": "HOST_URL"
@@ -31,3 +27,8 @@ In OpsWorks you would usually set these attributes in the **Custom JSON** for th
   }
 }
 ```
+
+## Other versions of these recipes
+
+This stack assumes that you are deploying the postgres database server separately (ie. relying on Amazon RDS).  
+The recipes for deploying a postgres server instance (not currently used) are in the [with-postgres branch](https://github.com/cocupu/opsworks-cookbooks/commit/dfb97f392c6d63d499d52082cdbe8d913a2f49ba)
