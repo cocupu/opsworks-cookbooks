@@ -9,6 +9,17 @@ package 'elasticsearch' do
   action :install
 end
 
+template "/etc/elasticsearch/elasticsearch.yml" do
+  source "elasticsearch.yml.erb"
+  owner  'root'
+  group  'root'
+  mode   '644'
+  action :create
+  variables({
+                :elasticsearch_host =>      node['deploy']['databindery_api_server']['elasticsearch']['host']
+            })
+end
+
 packages.each { |name| package name }
 
 service 'elasticsearch' do
