@@ -2,6 +2,8 @@
 
 Custom Cookbooks for the Databindery stack
 
+**Note:** This branch has been decomissioned. The necessary parts of these recipes were moved into the deploy scripts within the databindery-api-server code base.  See https://github.com/cocupu/databindery-api-server/tree/master/deploy
+
 ## Requirements
 
 In order to run the deploy recipes, you must set a number of attributes.  
