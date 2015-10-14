@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf'
+# match to the version of berkshelf that's pre-installed on opsworks
+# You can change this in the 'Edit Stack' page, but best to rely on
+# a version that's pre-installed to avoid compile issues.
+gem 'berkshelf', '3.2.0'
 gem 'test-kitchen'
 gem 'kitchen-vagrant'
