@@ -2,5 +2,7 @@
 
 See the Stack-specific notes for:
  * [Databindery Stack](https://github.com/cocupu/opsworks-cookbooks/blob/master/databindery/)
+ * [frontendmasters](https://github.com/cocupu/opsworks-cookbooks/blob/master/frontendmasters/)
+
 
 
