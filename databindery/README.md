@@ -1,9 +1,16 @@
 # Stack: DataBindery
 
-Custom Cookbooks for the Databindery stack
+Custom Cookbooks for the Databindery and Elasticsearch stacks
 
-* Berksfile adds opsworks cookbooks so setup can call opsworks_nodejs recipe
+Databindery Stack
+Currently the DataBinbdery stack does not need to rely on custom Berkshelf 
 * databindery::dat recipe installs dat
+* databindery::nodejs_debian_fix creates a symlink from bin/node to bin/nodejs
+
+Elasticsearch Stack
+This stack _does_ rely on custom Berkshelf
+* databindery:elastic_setup installs and configures elasticsearch
+* databindery:apt allows installing elasticsearch using apt-get 
 
 ## Requirements
 
