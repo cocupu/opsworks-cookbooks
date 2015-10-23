@@ -6,3 +6,4 @@ DEPENDENCIES
 GRAPH
   apt (2.8.2)
   databindery (1.0.0)
+    apt (>= 0.0.0)

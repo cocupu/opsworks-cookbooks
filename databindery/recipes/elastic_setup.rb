@@ -16,7 +16,7 @@ template "/etc/elasticsearch/elasticsearch.yml" do
   mode   '644'
   action :create
   variables({
-                :elasticsearch_host =>      node['deploy']['databindery_api_server']['elasticsearch']['host']
+                :elasticsearch_host =>      '0.0.0.0'
             })
 end
 
