@@ -8,5 +8,5 @@ source "https://supermarket.getchef.com"
 #   opsworks_cookbook cb
 # end
 
-cookbook 'apt'
+cookbook 'apt', path: '../apt'
 cookbook 'databindery', path: '.'
