@@ -1,10 +1,9 @@
 DEPENDENCIES
-  apt
-    path: ../apt
+  apt (= 2.6.0)
   databindery
     path: .
 
 GRAPH
-  apt (2.9.2)
+  apt (2.6.0)
   databindery (1.0.0)
     apt (>= 0.0.0)
